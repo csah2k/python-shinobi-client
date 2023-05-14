@@ -135,7 +135,7 @@ class ShinobiMonitorOrm:
 
     @property
     def base_url(self) -> str:
-        return f"http://{self.shinobi_client.host}:{self.shinobi_client.port}/{self.api_key}"
+        return f"http://{self.shinobi_client.host}:{self.shinobi_client.port}{self.shinobi_client.root_path}/{self.api_key}"
 
     @property
     def user(self) -> Dict:

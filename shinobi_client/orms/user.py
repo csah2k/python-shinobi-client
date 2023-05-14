@@ -53,7 +53,7 @@ class ShinobiUserOrm:
     def _base_url(self) -> str:
         if self.shinobi_client.super_user_token is None:
             raise ShinobiSuperUserCredentialsRequiredError()
-        return f"http://{self.shinobi_client.host}:{self.shinobi_client.port}" \
+        return f"http://{self.shinobi_client.host}:{self.shinobi_client.port}{self.shinobi_client.root_path}" \
                f"/super/{self.shinobi_client.super_user_token}/accounts"
 
     def __init__(self, shinobi_client: ShinobiClient):
@@ -82,7 +82,7 @@ class ShinobiUserOrm:
         :raises ShinobiWrongPasswordError: raised if an incorrect email/password pair is supplied
         """
         response = requests.post(
-            f"http://{self.shinobi_client.host}:{self.shinobi_client.port}/?json=true",
+            f"http://{self.shinobi_client.host}:{self.shinobi_client.port}{self.shinobi_client.root_path}/?json=true",
             data={
                 "mail": email,
                 "pass": password

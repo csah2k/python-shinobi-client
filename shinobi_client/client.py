@@ -10,13 +10,14 @@ class ShinobiClient:
     """
     host: str
     port: str
+    root_path: str = ""
     super_user_token: str = None
     super_user_email: str = None
     super_user_password: str = None
 
     @property
     def url(self) -> str:
-        return f"http://{self.host}:{self.port}"
+        return f"http://{self.host}:{self.port}{self.root_path}"
 
     @property
     def user(self) -> "ShinobiUserOrm":
